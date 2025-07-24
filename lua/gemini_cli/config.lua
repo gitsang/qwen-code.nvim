@@ -8,14 +8,14 @@ local M = {}
 
 M.defaults = {
   auto_reload = false,
-  gemini_cmd = "gemini",
+  gemini_cmd = "qwen",
   args = {},
   config = {
     os = { editPreset = "nvim-remote" },
     gui = { nerdFontsVersion = "3" },
   },
   win = {
-    wo = { winbar = "Gemini" },
+    wo = { winbar = "Qwen" },
     style = "gemini_cli",
     position = "right",
   },
