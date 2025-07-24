@@ -2,7 +2,7 @@
 
 🤖 Seamlessly integrate GeminiCLI with Neovim for an enhanced AI-assisted coding experience!
 
-## 🌟 Features
+## 1. 🌟 Features
 
 - [x] 🖥️ Gemini CLI terminal integration within Neovim
 - [x] 📤 Quick commands to add current buffer files (using `@` syntax)
@@ -12,7 +12,7 @@
       programmatic interaction and custom integrations
 - [x] 🔄 Auto-reload buffers on external changes (requires 'autoread')
 
-## 🎮 Commands
+## 2. 🎮 Commands
 
 - `:Gemini` - Open interactive command menu
 
@@ -34,25 +34,25 @@
   :Gemini send "Fix login validation"
   ```
 
-## 🔗 Requirements
+## 3. 🔗 Requirements
 
 🐍 Python: Install `gemini-cli`
 📋 System: **Neovim** >= 0.9.4
 🌙 Lua: `folke/snacks.nvim`,
 
-## 📦 Installation
+## 4. 📦 Installation
 
 Using lazy.nvim:
 
 ```lua
 {
-    "marcinjahn/gemini-cli.nvim",
-    cmd = "Gemini",
+    "gitsang/qwen-code.nvim",
+    cmd = "Qwen",
     -- Example key mappings for common actions:
     keys = {
-      { "<leader>a/", "<cmd>Gemini toggle<cr>", desc = "Toggle Gemini CLI" },
-      { "<leader>aa", "<cmd>Gemini ask<cr>", desc = "Ask Gemini", mode = { "n", "v" } },
-      { "<leader>af", "<cmd>Gemini add_file<cr>", desc = "Add File" },
+      { "<leader>qq", "<cmd>Qwen toggle<cr>", desc = "Toggle Qwen CLI" },
+      { "<leader>qa", "<cmd>Qwen ask<cr>", desc = "Ask Qwen", mode = { "n", "v" } },
+      { "<leader>qf", "<cmd>Qwen add_file<cr>", desc = "Add File" },
 
     },
     dependencies = {
@@ -64,14 +64,14 @@ Using lazy.nvim:
 
 After installing, run `:GeminiCLI health` to check if everything is set up correctly.
 
-## ⚙️ Configuration
+## 5. ⚙️ Configuration
 
 There is no need to call setup if you don't want to change the default options.
 
 ```lua
 require("gemini_cli").setup({
   -- Command that executes GeminiCLI
-  gemini_cmd = "gemini",
+  gemini_cmd = "qwen",
   -- Command line arguments passed to gemini-cli
   args = {
   },
@@ -87,24 +87,24 @@ require("gemini_cli").setup({
     gui = { nerdFontsVersion = "3" },
   },
   win = {
-    wo = { winbar = "GeminiCLI" },
+    wo = { winbar = "QwenCode" },
     style = "gemini_cli",
     position = "right",
   },
 })
 ```
 
-## 📚 API Reference
+## 6. 📚 API Reference
 
 The plugin provides a structured API for programmatic integration. Access via `require("gemini_cli").api`
 
-### Core Functions
+### 6.1 Core Functions
 
 ```lua
 local api = require("gemini_cli").api
 ```
 
-#### `health_check()`
+#### 6.1.1 `health_check()`
 
 Verify plugin health status
 
@@ -112,7 +112,7 @@ Verify plugin health status
 api.health_check()
 ```
 
-#### `toggle_terminal(opts?)`
+#### 6.1.2 `toggle_terminal(opts?)`
 
 Toggle GeminiCLI terminal window
 
@@ -122,9 +122,9 @@ api.toggle_terminal()
 
 ---
 
-### Terminal Operations
+### 6.2 Terminal Operations
 
-#### `send_to_terminal(text, opts?)`
+#### 6.2.1 `send_to_terminal(text, opts?)`
 
 Send raw text directly to GeminiCLI
 
@@ -132,7 +132,7 @@ Send raw text directly to GeminiCLI
 api.send_to_terminal("Fix the login validation")
 ```
 
-#### `send_command(command, input?, opts?)`
+#### 6.2.2 `send_command(command, input?, opts?)`
 
 Execute specific GeminiCLI command
 
@@ -140,9 +140,9 @@ Execute specific GeminiCLI command
 api.send_command("/commit", "Add error handling")
 ```
 
-### File Management
+### 6.3 File Management
 
-#### `add_file(filepath)`
+#### 6.3.1 `add_file(filepath)`
 
 Add specific file to session
 
@@ -152,7 +152,7 @@ api.add_file("/src/utils.lua")
 
 ``
 
-#### `add_current_file()`
+#### 6.3.2 `add_current_file()`
 
 Add current buffer's file (uses `add_file` internally)
 
@@ -164,7 +164,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 ```
 
-#### `send_diagnostics_with_prompt(opts?)`
+#### 6.3.3 `send_diagnostics_with_prompt(opts?)`
 
 Send current buffer's diagnostics with an optional prompt
 
@@ -174,9 +174,9 @@ api.send_diagnostics_with_prompt()
 
 ---
 
-### UI Components
+### 6.4 UI Components
 
-#### `open_command_picker(opts?, callback?)`
+#### 6.4.1 `open_command_picker(opts?, callback?)`
 
 Interactive command selector with custom handling
 
